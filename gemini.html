@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>烙馍网 AI团队 - 探索人工智能的未来</title>
+    <style>
+        /* 全局样式 */
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --text-color: #1f2937;
+            --bg-light: #f3f4f6;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: #fafafa;
+        }
+
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* 导航栏 */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links a {
+            margin-left: 30px;
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* 英雄横幅 (Hero Section) */
+        .hero {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+            color: var(--white);
+            padding: 160px 0 100px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto 30px auto;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--white);
+            color: var(--primary-color);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* 通用板块样式 */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background-color: var(--primary-color);
+            margin: 10px auto 0 auto;
+            border-radius: 2px;
+        }
+
+        /* 团队简介 */
+        .about-text {
+            font-size: 18px;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+            color: #4b5563;
+        }
+
+        /* 核心技术板块 */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .tech-card {
+            background-color: var(--white);
+            padding: 40px 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: translateY 0.3s;
+        }
+
+        .tech-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .tech-icon {
+            font-size: 40px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .tech-card h3 {
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        /* 产品与项目 */
+        .projects {
+            background-color: var(--bg-light);
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .project-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .project-info {
+            padding: 30px;
+        }
+
+        .project-info h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .project-info p {
+            color: #4b5563;
+            margin-bottom: 20px;
+        }
+
+        /* 团队成员 */
+        .member-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+        }
+
+        .member-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .member-avatar {
+            width: 100px;
+            height: 100px;
+            background-color: #e5e7eb;
+            border-radius: 50%;
+            margin: 0 auto 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            color: #9ca3af;
+        }
+
+        .member-card h3 {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        .member-role {
+            color: var(--primary-color);
+            font-weight: 500;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        /* 页脚 */
+        footer {
+            background-color: #111827;
+            color: #9ca3af;
+            padding: 40px 0;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        footer a {
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* 响应式断点 */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* 移动端简易处理，实际应用可加汉堡菜单 */
+            }
+            .hero h1 {
+                font-size: 32px;
+            }
+            .hero p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <a href="https://www.luomor.com" class="logo" target="_blank">烙馍网 Luomor</a>
+            <nav class="nav-links">
+                <a href="#about">关于我们</a>
+                <a href="#tech">核心技术</a>
+                <a href="#projects">AI产品</a>
+                <a href="#team">团队成员</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>烙馍网 AI 创新实验室</h1>
+            <p>我们专注于尖端人工智能技术的研发与应用，用算法赋能场景，用智能重塑未来。致力于构建更高效、更具创新力的AI生态体系。</p>
+            <a href="#projects" class="btn">了解我们的产品</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">团队简介</h2>
+            <p class="about-text">
+                烙馍网 AI 团队汇聚了来自海内外顶尖高校及科技公司的算法专家、架构师与数据科学家。我们紧跟全球人工智能发展浪潮，在深度学习、自然语言处理、计算机视觉以及大模型工程化落地等领域拥有深厚的工程实践经验。团队秉承“务实、创新、开放”的理念，持续为用户及合作伙伴输出高质量的AI解决方案。
+            </p>
+        </div>
+    </section>
+
+    <section id="tech" style="background-color: #f9fafb;">
+        <div class="container">
+            <h2 class="section-title">核心技术领域</h2>
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <div class="tech-icon">🤖</div>
+                    <h3>大语言模型 (LLM)</h3>
+                    <p>专注于大模型的微调（Fine-tuning）、检索增强生成（RAG）以及全场景的智能 Agent 开发与部署。</p>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-icon">✍️</div>
+                    <h3>自然语言处理</h3>
+                    <p>涵盖文本挖掘、情感分析、多语言翻译及意图识别，让机器更懂人类语言。</p>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-icon">👁️</div>
+                    <h3>计算机视觉</h3>
+                    <p>图像识别、目标检测与生成式AIGC视觉技术，赋予系统敏锐的“数字眼睛”。</p>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-icon">⚡</div>
+                    <h3>高性能算力工程</h3>
+                    <p>精通大规模模型分布式训练、推理加速以及边缘端设备的轻量化部署。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">AI 产品与应用</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <div class="project-info">
+                        <h3>Luomor Chat 智能助手</h3>
+                        <p>基于前沿大模型底座开发的智能对话与内容创作平台。支持多轮对话、代码编写、文案生成及复杂逻辑推理，大幅提升日常办公与创作效率。</p>
+                        <span style="color: var(--primary-color); font-weight: bold;">已上线 →</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-info">
+                        <h3>RAG 知识库检索系统</h3>
+                        <p>企业级垂直领域知识管理方案。通过精准的向量嵌入（Embedding）与检索技术，解决大模型“幻觉”问题，让企业私有数据秒变智能大脑。</p>
+                        <span style="color: var(--primary-color); font-weight: bold;">企业内测中 →</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-info">
+                        <h3>AIGC 智能内容生成矩阵</h3>
+                        <p>集文本、图片、音视频多模态生成于一体的创作矩阵。为自媒体、电商及广告营销行业提供一键式的创意物料生成服务。</p>
+                        <span style="color: var(--primary-color); font-weight: bold;">迭代更新中 →</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="team">
+        <div class="container">
+            <h2 class="section-title">核心成员</h2>
+            <div class="member-grid">
+                <div class="member-card">
+                    <div class="member-avatar">👨‍💻</div>
+                    <h3>张创新</h3>
+                    <div class="member-role">AI 团队负责人 / 首席科学家</div>
+                    <p>负责AI团队的整体技术架构与战略方向，拥有10年以上算法研发经验。</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-avatar">👩‍💻</div>
+                    <h3>李智能</h3>
+                    <div class="member-role">NLP 高级算法专家</div>
+                    <p>专注于大语言模型微调与Agent开发，前知名互联网公司LLM核心开发者。</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-avatar">👨‍💻</div>
+                    <h3>王视觉</h3>
+                    <div class="member-role">计算机视觉技术专家</div>
+                    <p>精通图像深度学习算法，主导过多个工业级多模态视觉项目的落地。</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-avatar">👩‍💻</div>
+                    <h3>赵工程</h3>
+                    <div class="member-role">MLOps 架构师</div>
+                    <p>负责大规模模型的高效推理、算力优化及高并发高可用云端部署。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 <a href="https://www.luomor.com" target="_blank">烙馍网 (Luomor.com)</a> AI团队. All Rights Reserved.</p>
+            <p style="margin-top: 10px; font-size: 12px; color: #4b5563;">探索智能边界，共创美好未来</p>
+        </div>
+    </footer>
+
+</body>
+</html>
